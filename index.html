@@ -10,12 +10,12 @@
 </head>
 <body>
   <div id="app"></div>
+
   <script>
-   window.$docsify = {
+    window.$docsify = {
       // 从 _navbar.md中加载导航栏
       loadNavbar: true,
       hideSidebar: true,
-
       //开启相对路径
       relativePath: true,
       // 切换页面后自动跳转到页面顶部
@@ -23,8 +23,34 @@
       //basePath: '/',
       name: '',
       repo: ''
-   }
-</script>
+    };
+
+    // Define links array with repositories and their index.html paths
+    var links = [
+      { name: 'PPT1', url: 'https://raw.githubusercontent.com/Sipym/PPT/master/ALL_PPT/jyy/dist/index.html' },
+      // Add more repositories and paths as needed
+    ];
+
+    // Function to create and append links
+    function appendLinks() {
+      var appContainer = document.getElementById('app');
+      
+      links.forEach(function(link) {
+        var linkElement = document.createElement('a');
+        linkElement.textContent = link.name;
+        linkElement.href = link.url;
+        linkElement.target = '_blank'; // Open in new tab
+        linkElement.style.display = 'block'; // Display each link on a new line
+        appContainer.appendChild(linkElement);
+      });
+    }
+
+    // Call appendLinks function when DOM content is loaded
+    document.addEventListener('DOMContentLoaded', function() {
+      appendLinks();
+    });
+  </script>
+
   <!-- Docsify v4 -->
   <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
 </body>
